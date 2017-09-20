@@ -12,5 +12,14 @@
     "url": "https://sbruchmann.me"
   },
   "license": "MIT",
-  "main": "index.js"
+  "main": "index.js",
+  "dependencies": {
+    "prosemirror-commands": "^0.23.0",
+    "prosemirror-history": "^0.23.0",
+    "prosemirror-keymap": "^0.23.0",
+    "prosemirror-model": "^0.23.0",
+    "prosemirror-schema-basic": "^0.23.0",
+    "prosemirror-state": "^0.23.0",
+    "prosemirror-view": "^0.23.0"
+  }
 }
