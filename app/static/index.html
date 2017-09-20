@@ -5,21 +5,5 @@
 		<title>Arthur</title>
 	</head>
 	<body>
-		<script>
-			(function() {
-				"use strict";
-
-				const path = require("path");
-				const url = require("url");
-
-				const {query} = url.parse(window.location.href, true);
-
-				if (process.env.NODE_ENV === "development") {
-					require("babel-register");
-				}
-
-				require(path.join(query.SRC_PATH, "renderer", "index.js"));
-			}());
-		</script>
 	</body>
 </html>

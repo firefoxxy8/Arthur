@@ -71,6 +71,9 @@ export default class Application {
 		const window = this.createWindow("main", {
 			show: false,
 			title: app.getName(),
+			webPreferences: {
+				preload: joinPath(this.SRC_PATH, "renderer", "preload.js"),
+			},
 			url: formatURL({
 				pathname: joinPath(this.APP_PATH, "static", "index.html"),
 				protocol: "file",
