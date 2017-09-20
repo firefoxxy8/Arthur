@@ -1,0 +1,14 @@
+{
+  "ignore": "node_modules",
+  "sourceMaps": true,
+  "plugins": [
+    "add-module-exports"
+  ],
+  "presets": [
+    ["env", {
+      "targets": {
+        "electron": "1.7.6"
+      }
+    }]
+  ]
+}

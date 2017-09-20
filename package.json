@@ -1,0 +1,38 @@
+{
+  "description": "Arthur build dependencies",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bruchmann/arthur.git"
+  },
+  "license": "MIT",
+  "engines": {
+    "node": ">= 7",
+    "npm": ">= 4"
+  },
+  "scripts": {
+    "build": "babel app/src/ --out-dir app/out/",
+    "clean": "rimraf app/out/ && rimraf dist/",
+    "lint": "eslint app/**/*.js",
+    "package": "electron-packager app/ --out dist/ --ignore src --asar",
+    "prepackage": "npm run clean && npm run build",
+    "start": "cross-env NODE_ENV=development electron app/",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": {
+    "name": "Steffen Bruchmann",
+    "email": "hi@sbruchmann.me",
+    "url": "https://sbruchmann.me"
+  },
+  "dependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-eslint": "^8.0.0",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-preset-env": "^1.6.0",
+    "babel-register": "^6.26.0",
+    "cross-env": "^5.0.5",
+    "electron": "1.7.6",
+    "electron-packager": "^9.1.0",
+    "eslint": "^4.7.1",
+    "rimraf": "^2.6.2"
+  }
+}

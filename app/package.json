@@ -1,0 +1,16 @@
+{
+  "name": "arthur",
+  "productName": "Arthur",
+  "description": "An experimental text editor.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bruchmann/arthur.git"
+  },
+  "author": {
+    "name": "Steffen Bruchmann",
+    "email": "hi@sbruchmann.me",
+    "url": "https://sbruchmann.me"
+  },
+  "license": "MIT",
+  "main": "index.js"
+}
