@@ -5,6 +5,10 @@ const toHashMap = (values) => {
 	}, {});
 };
 
+export const COMMANDS = toHashMap([
+	"IMPORT_FILE",
+]);
+
 export const PLATFORM = toHashMap([
 	"LINUX",
 	"MACOS",

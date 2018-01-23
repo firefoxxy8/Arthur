@@ -1,8 +1,9 @@
-import {app, BrowserWindow} from "electron";
+import {app, BrowserWindow, Menu} from "electron";
 import {join as joinPath} from "path";
 import {format as formatURL} from "url";
 
 import {PLATFORM} from "../shared/constants";
+import {ApplicationMenu} from "./ApplicationMenu";
 
 export default class Application {
 	constructor({APP_PATH, NODE_ENV, PLATFORM, SRC_PATH}) {
@@ -23,6 +24,10 @@ export default class Application {
 				enumerable: true,
 				value: SRC_PATH,
 			},
+			menu: {
+				enumerable: true,
+				value: new ApplicationMenu(),
+			},
 			windows: {
 				enumerable: true,
 				value: new Map(),
@@ -38,6 +43,7 @@ export default class Application {
 		app.on("activate", this.onAppActivate);
 		app.on("window-all-closed", this.onAllWindowsClosed);
 
+		Menu.setApplicationMenu(this.menu.build());
 		this.createMainWindow();
 	}
 
