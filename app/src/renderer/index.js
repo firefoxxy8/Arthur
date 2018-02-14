@@ -1,34 +1,19 @@
 import {ipcRenderer, remote} from "electron";
 import {readFile} from "fs";
 
-import {baseKeymap} from "prosemirror-commands";
-import {EditorState} from "prosemirror-state";
-import {EditorView} from "prosemirror-view";
-import {history, redo, undo} from "prosemirror-history";
-import {keymap} from "prosemirror-keymap";
-import {defaultMarkdownParser, schema} from "prosemirror-markdown";
+import {defaultMarkdownParser} from "prosemirror-markdown";
 
 import {COMMANDS} from "../shared/constants";
+import {Editor} from "./Editor";
 
 const {BrowserWindow, dialog} = remote;
 
-const createEditor = (host, doc = null) => {
-	const state = EditorState.create({
-		doc,
-		schema,
-		plugins: [
-			history(),
-			keymap({"Mod-z": undo, "Mod-y": redo}),
-			keymap(baseKeymap),
-		],
-	});
-	const view = new EditorView(host, {state});
-	return {state, view};
-};
-
 const importFile = async (filePath) => {
 	const source = await readFileAsync(filePath, "utf8");
-	createEditor($host, defaultMarkdownParser.parse(source));
+	const editor = new Editor({
+		doc: defaultMarkdownParser.parse(source),
+	});
+	$host.appendChild(editor.getDOM());
 };
 
 const promptUserForFilePath = () => {
