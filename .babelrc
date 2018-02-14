@@ -7,7 +7,7 @@
   "presets": [
     ["env", {
       "targets": {
-        "electron": "1.7.6"
+        "electron": "1.7.11"
       }
     }]
   ]
