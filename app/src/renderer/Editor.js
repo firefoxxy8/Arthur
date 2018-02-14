@@ -18,7 +18,7 @@ const DEFAULT_PLUGINS = [
 export class Editor {
 	constructor({ doc, plugins = [] } = {}) {
 		this.state = EditorState.create({
-			doc,
+			doc: doc.root,
 			schema,
 			plugins: [
 				...DEFAULT_PLUGINS,

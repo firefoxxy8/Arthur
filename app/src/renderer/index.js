@@ -1,18 +1,16 @@
 import {ipcRenderer, remote} from "electron";
 import {readFile} from "fs";
 
-import {defaultMarkdownParser} from "prosemirror-markdown";
-
 import {COMMANDS} from "../shared/constants";
+import {Document} from "./Document";
 import {Editor} from "./Editor";
 
 const {BrowserWindow, dialog} = remote;
 
 const importFile = async (filePath) => {
 	const source = await readFileAsync(filePath, "utf8");
-	const editor = new Editor({
-		doc: defaultMarkdownParser.parse(source),
-	});
+	const doc = Document.deserialize(filePath, source);
+	const editor = new Editor({ doc });
 	$host.appendChild(editor.getDOM());
 };
 
@@ -41,8 +39,7 @@ const promptUserForFilePath = () => {
 const readFileAsync = (filePath, options) => {
 	return new Promise((resolve, reject) => {
 		readFile(filePath, options, (err, contents) => {
-			err ? reject(err) : resolve(contents);
-		});
+			err ? reject(err) : resolve(contents); });
 	});
 };
 
